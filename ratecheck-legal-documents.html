@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RateCheck — Legal Documents</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --cream: #faf7f2;
+      --gold: #c9973a;
+      --border: #e0d8cc;
+      --muted: #777068;
+      --light: #f0ebe2;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Instrument Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* COVER */
+    .cover {
+      background: #111;
+      color: #f5f2ec;
+      padding: 4rem 3rem;
+      border-bottom: 3px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cover-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cover h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #f5f2ec;
+    }
+
+    .cover h1 em { color: var(--gold); font-style: italic; }
+
+    .cover-meta {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    .cover-warning {
+      margin-top: 1.5rem;
+      border: 1px solid rgba(201,151,58,0.3);
+      background: rgba(201,151,58,0.06);
+      padding: 1rem 1.2rem;
+      font-size: 0.78rem;
+      color: #b8a070;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* NAV */
+    .doc-nav {
+      background: var(--light);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 3rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .doc-nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .doc-nav a:hover { color: var(--gold); }
+
+    /* DOCUMENT */
+    .document {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4rem 3rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .document:last-child { border-bottom: none; }
+
+    /* DOC HEADER */
+    .doc-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-num {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .doc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-date {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* SECTIONS */
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 2rem 0 0.6rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+    p { margin-bottom: 0.8rem; color: #4a4540; }
+
+    ul {
+      margin: 0.5rem 0 0.8rem 1.5rem;
+      color: #4a4540;
+    }
+
+    ul li { margin-bottom: 0.4rem; }
+
+    strong { color: var(--ink); font-weight: 500; }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--light);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* PLACEHOLDER */
+    .placeholder {
+      background: #fff8ee;
+      border: 1px dashed var(--gold);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-style: italic;
+      display: inline;
+    }
+
+    /* SIGNATURE BLOCK */
+    .sig-block {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .sig-line {
+      border-top: 1px solid var(--ink);
+      padding-top: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #444;
+      padding: 1.5rem 3rem;
+      font-size: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    @media print {
+      .doc-nav { display: none; }
+      .document { page-break-after: always; padding: 2rem; }
+      .cover { padding: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .cover, .document, .doc-nav, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .sig-block { grid-template-columns: 1fr; }
+      .doc-nav { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Legal Document Bundle · Version 1.0</div>
+  <h1>RateCheck <em>Legal</em><br/>Foundation Documents</h1>
+  <div class="cover-meta">Effective Date: April 2026 · Jurisdiction: Illinois, USA · Entity: RateCheck (Pending LLC Formation)</div>
+  <div class="cover-warning">
+    ⚠️ <strong>Important Notice:</strong> These documents are placeholder templates drafted to establish basic protections during the pre-legal phase of this venture. They are <em>not</em> a substitute for documents reviewed by a licensed attorney. Before accepting investment, licensing data, or scaling beyond 1,000 respondents, these documents must be reviewed and finalized by qualified legal counsel.
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="doc-nav">
+  <a href="#privacy">01 · Privacy Policy</a>
+  <a href="#terms">02 · Terms of Service</a>
+  <a href="#datause">03 · Data Use Agreement</a>
+  <a href="#ip">04 · IP Notice</a>
+</nav>
+
+<!-- ============================================================ -->
+<!-- DOCUMENT 1: PRIVACY POLICY -->
+<!-- ============================================================ -->
+<div class="document" id="privacy">
+  <div class="doc-header">
+    <div class="doc-num">Document 01 of 04</div>
+    <div class="doc-title">Privacy Policy</div>
+    <div class="doc-date">Effective: April 2026 · Last Updated: April 2026</div>
+  </div>
+
+  <div class="callout">This Privacy Policy explains how RateCheck collects, uses, and protects information submitted through our survey tools and any associated digital properties.</div>
+
+  <h2>1. Who We Are</h2>
+  <p>RateCheck is an independent media research initiative based in Illinois, USA. We collect public perception data related to film content ratings with the goal of advancing transparency and accountability in the rating system. We operate under the name RateCheck, pending formal LLC registration.</p>
+  <p>For privacy inquiries, contact us at: <strong>ratecheckhq@gmail.com</strong></p>
+
+  <h2>2. What We Collect</h2>
+  <p>We collect only the information you voluntarily provide through our surveys. This may include:</p>
+  <ul>
+    <li>Age range (not exact date of birth)</li>
+    <li>General demographic information (parenting status, viewing habits)</li>
+    <li>Opinions and ratings related to film content</li>
+    <li>Open-ended written responses you choose to submit</li>
+  </ul>
+  <p><strong>We do not collect:</strong> your name, email address, home address, phone number, payment information, government identification, or any device identifiers unless you voluntarily provide them in an open-text field.</p>
+
+  <h2>3. How We Use Your Information</h2>
+  <p>Information you provide is used solely for the following purposes:</p>
+  <ul>
+    <li>Conducting statistical analysis on film rating perception across demographic groups</li>
+    <li>Publishing aggregate research findings (no individual responses are identifiable)</li>
+    <li>Improving and refining our survey instruments</li>
+    <li>Sharing anonymized, aggregated data with research partners, media platforms, or policy organizations</li>
+  </ul>
+  <p>We will never sell your individual responses. Any data shared externally is aggregated and anonymized such that no individual respondent can be identified.</p>
+
+  <h2>4. Children's Privacy (COPPA)</h2>
+  <p>Our surveys are not directed at children under the age of 13. We do not knowingly collect personal information from anyone under 13. If you are under 13, please do not participate in our surveys. If we become aware that we have inadvertently collected information from a child under 13, we will delete it promptly.</p>
+  <p>Respondents between the ages of 13 and 17 should have parental awareness before participating.</p>
+
+  <h2>5. Data Storage & Security</h2>
+  <p>Survey responses are stored through third-party survey platforms (such as Google Forms, Typeform, or similar services) subject to their own privacy policies and security standards. We do not operate our own data servers at this stage. We take reasonable precautions to limit access to collected data to authorized personnel only.</p>
+
+  <h2>6. Your Rights</h2>
+  <p>Depending on your location, you may have rights regarding your data including:</p>
+  <ul>
+    <li><strong>California residents (CCPA):</strong> The right to know what data we hold, request deletion, and opt out of data sale (we do not sell individual data)</li>
+    <li><strong>EU/EEA residents (GDPR):</strong> The right to access, rectify, erase, and port your data</li>
+    <li><strong>All respondents:</strong> Because our surveys are anonymous by design, we may be unable to locate or delete a specific individual's response without identifying information</li>
+  </ul>
+  <p>To submit a privacy request, contact: <strong>ratecheckhq@gmail.com</strong></p>
+
+  <h2>7. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy as our operations evolve. Material changes will be noted with an updated effective date. Continued participation in our surveys after changes constitutes acceptance of the updated policy.</p>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- DOCUMENT 2: TERMS OF SERVICE -->
+<!-- ============================================================ -->
+<div class="document" id="terms">
+  <div class="doc-header">
+    <div class="doc-num">Document 02 of 04</div>
+    <div class="doc-title">Terms of Service</div>
+    <div class="doc-date">Effective: April 2026 · Last Updated: April 2026</div>
+  </div>
+
+  <div class="callout">By participating in any RateCheck survey, accessing our website, or engaging with our content, you agree to the following Terms of Service.</div>
+
+  <h2>1. Acceptance of Terms</h2>
+  <p>These Terms of Service ("Terms") govern your use of RateCheck's surveys, website, social media content, and any associated research materials (collectively, "Services"). By using our Services, you confirm you are at least 13 years of age and agree to be bound by these Terms.</p>
+
+  <h2>2. Use of Services</h2>
+  <p>You agree to use RateCheck's Services only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+  <ul>
+    <li>Submit false, misleading, or fraudulent survey responses</li>
+    <li>Attempt to manipulate, skew, or corrupt our research data</li>
+    <li>Use automated tools, bots, or scripts to submit survey responses</li>
+    <li>Reproduce, distribute, or commercially exploit our survey instruments, reports, or findings without written permission</li>
+    <li>Attempt to reverse-engineer, copy, or replicate our research methodology for competing commercial purposes</li>
+  </ul>
+
+  <h2>3. Intellectual Property</h2>
+  <p>All survey instruments, research methodologies, report formats, visual designs, branding, and published findings are the exclusive intellectual property of RateCheck. Nothing in these Terms grants you any right to use RateCheck's intellectual property without prior written consent.</p>
+  <p>Your survey responses, once submitted, are contributed to RateCheck's anonymized research dataset. You retain no ownership over submitted responses.</p>
+
+  <h2>4. Disclaimer of Warranties</h2>
+  <p>RateCheck's Services are provided "as is" and "as available" without warranty of any kind, express or implied. We do not warrant that our Services will be uninterrupted, error-free, or free of harmful components. Research findings are provided for informational and advocacy purposes and do not constitute legal, regulatory, or professional advice.</p>
+
+  <h2>5. Limitation of Liability</h2>
+  <p>To the fullest extent permitted by applicable law, RateCheck shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of or inability to use our Services, even if we have been advised of the possibility of such damages.</p>
+
+  <h2>6. Governing Law</h2>
+  <p>These Terms are governed by the laws of the State of Illinois, USA, without regard to conflict of law principles. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts located in Illinois.</p>
+
+  <h2>7. Changes to Terms</h2>
+  <p>We reserve the right to modify these Terms at any time. Continued use of our Services after modifications constitutes acceptance of the revised Terms. We will indicate the date of last update at the top of this document.</p>
+
+  <h2>8. Contact</h2>
+  <p>Questions about these Terms may be directed to: <strong>ratecheckhq@gmail.com</strong></p>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- DOCUMENT 3: DATA USE AGREEMENT -->
+<!-- ============================================================ -->
+<div class="document" id="datause">
+  <div class="doc-header">
+    <div class="doc-num">Document 03 of 04</div>
+    <div class="doc-title">Data Use Agreement</div>
+    <div class="doc-date">Template — To Be Executed Per Partner · Effective Upon Signature</div>
+  </div>
+
+  <div class="callout">This Data Use Agreement ("DUA") is entered into between RateCheck ("Provider") and the organization identified below ("Recipient") for the purpose of governing access to RateCheck's proprietary research dataset.</div>
+
+  <h2>1. Parties</h2>
+  <p><strong>Data Provider:</strong> RateCheck, an Illinois-based media research initiative (ratecheckhq@gmail.com)</p>
+  <p><strong>Data Recipient:</strong> <span class="placeholder">[Organization Name, Address, Contact]</span></p>
+
+  <h2>2. Dataset Description</h2>
+  <p>The "Dataset" refers to RateCheck's proprietary collection of anonymized, aggregated survey responses measuring public perception of film content ratings across demographic groups. The Dataset includes but is not limited to:</p>
+  <ul>
+    <li>Demographic breakdowns of rating agreement/disagreement rates</li>
+    <li>Perception scores across MPA rating criteria (language, violence, sexual content, etc.)</li>
+    <li>Longitudinal trend data across survey waves</li>
+    <li>Statistical analysis and derived findings</li>
+  </ul>
+  <p>The Dataset does not include any individually identifiable information.</p>
+
+  <h2>3. Permitted Uses</h2>
+  <p>Recipient may use the Dataset solely for the following purposes:</p>
+  <ul>
+    <li><span class="placeholder">[Describe specific permitted use — e.g., internal content classification research, product development, academic publication]</span></li>
+  </ul>
+  <p>Any use not explicitly listed above requires prior written approval from RateCheck.</p>
+
+  <h2>4. Prohibited Uses</h2>
+  <p>Recipient shall not:</p>
+  <ul>
+    <li>Redistribute, sublicense, sell, or share the Dataset with third parties without written consent</li>
+    <li>Attempt to re-identify individual survey respondents</li>
+    <li>Use the Dataset to develop competing research products or services</li>
+    <li>Publish findings derived from the Dataset without crediting RateCheck as the data source</li>
+    <li>Use the Dataset in any way that violates applicable privacy laws</li>
+  </ul>
+
+  <h2>5. Attribution</h2>
+  <p>Any publication, presentation, report, or product incorporating findings from the Dataset must include the following attribution: <em>"Data sourced from RateCheck Film Rating Perception Study (ratecheck.com)"</em> or as otherwise agreed in writing.</p>
+
+  <h2>6. Fees & Licensing</h2>
+  <p>Access to the Dataset is provided under the following terms:</p>
+  <p><span class="placeholder">[License fee, payment schedule, and license duration to be specified per agreement]</span></p>
+
+  <h2>7. Term & Termination</h2>
+  <p>This Agreement is effective upon signature by both parties and remains in effect for <span class="placeholder">[12 months / duration]</span> unless terminated earlier. Either party may terminate with 30 days written notice. Upon termination, Recipient must destroy or return all copies of the Dataset.</p>
+
+  <h2>8. Confidentiality</h2>
+  <p>Recipient agrees to treat the Dataset as confidential and proprietary information of RateCheck and to implement reasonable security measures to prevent unauthorized access or disclosure.</p>
+
+  <h2>9. Governing Law</h2>
+  <p>This Agreement is governed by the laws of the State of Illinois. Disputes shall be resolved through binding arbitration in Illinois before pursuing litigation.</p>
+
+  <div class="sig-block">
+    <div>
+      <div class="sig-line">Signature — RateCheck (Provider)</div>
+      <br/>
+      <div class="sig-line">Printed Name & Title</div>
+      <br/>
+      <div class="sig-line">Date</div>
+    </div>
+    <div>
+      <div class="sig-line">Signature — Recipient</div>
+      <br/>
+      <div class="sig-line">Printed Name & Title</div>
+      <br/>
+      <div class="sig-line">Date</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- DOCUMENT 4: IP NOTICE -->
+<!-- ============================================================ -->
+<div class="document" id="ip">
+  <div class="doc-header">
+    <div class="doc-num">Document 04 of 04</div>
+    <div class="doc-title">Intellectual Property Notice & Ownership Declaration</div>
+    <div class="doc-date">Effective: April 2026 · Jurisdiction: Illinois, USA</div>
+  </div>
+
+  <div class="callout">This notice establishes RateCheck's ownership of its core intellectual property assets, including its name, brand, research methodology, survey instruments, and published findings.</div>
+
+  <h2>1. Brand & Trade Name</h2>
+  <p>The name <strong>"RateCheck"</strong>, the RateCheck logo mark (film frame with checkmark device), the tagline <em>"Film Rating Intelligence"</em>, and all associated visual identity elements are proprietary assets of RateCheck's founder, created in April 2026. Unauthorized use of these marks in connection with similar goods or services is prohibited.</p>
+  <p>RateCheck intends to apply for federal trademark registration upon LLC formation. In the interim, common law trademark rights are asserted through active commercial use beginning April 2026.</p>
+
+  <h2>2. Research Methodology</h2>
+  <p>RateCheck's survey design, hypothesis framework (including the demographic mirroring/homophily hypothesis applied to content rating perception), question architecture, and analytical framework constitute proprietary intellectual property. These methodologies may not be replicated for commercial purposes without written consent.</p>
+
+  <h2>3. Survey Instruments</h2>
+  <p>All RateCheck survey questionnaires, including the RateCheck Film Rating Perception Survey (v1.0, April 2026), are original works protected under applicable copyright law. Reproduction or adaptation of these instruments requires prior written permission.</p>
+
+  <h2>4. Research Findings & Reports</h2>
+  <p>All reports, datasets, analyses, visualizations, and published findings produced by RateCheck are protected intellectual property. They may be cited with proper attribution but may not be reproduced in full or adapted without a signed Data Use Agreement.</p>
+
+  <h2>5. Ownership</h2>
+  <p>All intellectual property described in this notice is owned by <span class="placeholder">[Founder's Full Legal Name]</span>, operating as RateCheck, an Illinois-based venture (pending LLC formation). Upon LLC formation, all IP will be formally assigned to RateCheck LLC.</p>
+
+  <h2>6. Notice of Rights</h2>
+  <p>© 2026 RateCheck. All rights reserved. Unauthorized reproduction, distribution, or commercial exploitation of RateCheck's intellectual property is prohibited and may result in legal action.</p>
+
+  <h2>7. Contact for Licensing</h2>
+  <p>To request permission to use RateCheck's intellectual property, contact: <strong>ratecheckhq@gmail.com</strong></p>
+
+  <div class="sig-block">
+    <div>
+      <div class="sig-line">Founder Signature</div>
+      <br/>
+      <div class="sig-line">Printed Full Legal Name</div>
+      <br/>
+      <div class="sig-line">Date</div>
+    </div>
+    <div>
+      <div class="sig-line">Witness Signature (optional)</div>
+      <br/>
+      <div class="sig-line">Printed Name</div>
+      <br/>
+      <div class="sig-line">Date</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>© 2026 RateCheck · All Rights Reserved · ratecheckhq@gmail.com · Illinois, USA</div>
+  <div class="footer-brand">RateCheck</div>
+</footer>
+
+</body>
+</html>

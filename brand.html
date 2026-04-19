@@ -3,392 +3,253 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RateCheck Logo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <title>RateCheck — Brand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --noir: #0d0d0d;
+      --cream: #faf6ef;
+      --gold: #b8975a;
+      --border: #e8e3db;
+      --ink: #1c1917;
+      --mid: #57534e;
+      --muted: #a8a29e;
+    }
+
     body {
-      background: #0d0d0d;
+      background: var(--cream);
       min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 560px;
+    }
+
+    .page-eyebrow {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      font-weight: 500;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .page-title em { color: var(--gold); font-style: italic; }
+
+    .page-sub {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* LOGO DISPLAY */
+    .logo-display {
+      background: var(--noir);
+      padding: 4rem 3rem;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 3rem;
-      padding: 3rem 2rem;
-      font-family: 'Instrument Sans', sans-serif;
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
     }
 
-    .label {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #444;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    /* LOGO VARIANTS */
-    .logo-set {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    /* PRIMARY — DARK */
-    .logo-primary {
+    .logo-inner {
       display: flex;
       align-items: center;
-      gap: 14px;
-      background: #0d0d0d;
-      padding: 2rem 2.5rem;
-      border: 1px solid #1e1e1e;
+      gap: 1.1rem;
     }
 
     .logo-mark {
-      position: relative;
-      width: 48px;
-      height: 48px;
+      width: 62px;
+      height: 62px;
       flex-shrink: 0;
     }
 
-    .logo-mark svg {
-      width: 100%;
-      height: 100%;
-    }
+    .logo-mark svg { width: 100%; height: 100%; }
 
-    .logo-text-wrap {
+    .logo-text {
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 3px;
     }
 
-    .logo-wordmark {
+    .logo-word {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
+      font-size: 2.6rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       line-height: 1;
       color: #f5f2ec;
     }
 
-    .logo-wordmark span {
-      color: #d4a843;
-    }
+    .logo-word span { color: var(--gold); }
 
     .logo-tagline {
-      font-family: 'Instrument Sans', sans-serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.22em;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: #555;
+      color: rgba(184,151,90,0.7);
       font-weight: 400;
     }
 
-    /* LIGHT VERSION */
-    .logo-light {
+    /* META */
+    .brand-meta {
       display: flex;
-      align-items: center;
-      gap: 14px;
-      background: #f5f2ec;
-      padding: 2rem 2.5rem;
-      border: 1px solid #e0dbd0;
-    }
-
-    .logo-light .logo-wordmark {
-      color: #1a1a1a;
-    }
-
-    .logo-light .logo-tagline {
-      color: #999;
-    }
-
-    /* ICON ONLY */
-    .logo-icon-wrap {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .icon-dark {
-      width: 64px;
-      height: 64px;
-      background: #0d0d0d;
-      border: 1px solid #1e1e1e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px;
-    }
-
-    .icon-gold {
-      width: 64px;
-      height: 64px;
-      background: #d4a843;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px;
-    }
-
-    .icon-light {
-      width: 64px;
-      height: 64px;
-      background: #f5f2ec;
-      border: 1px solid #e0dbd0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px;
-    }
-
-    /* STACKED VERSION */
-    .logo-stacked {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      background: #0d0d0d;
-      padding: 2rem 3rem;
-      border: 1px solid #1e1e1e;
-    }
-
-    .logo-stacked .logo-wordmark {
-      font-size: 1.8rem;
-      text-align: center;
-    }
-
-    .logo-stacked .logo-tagline {
-      text-align: center;
-    }
-
-    /* DIVIDER */
-    .section-divider {
+      gap: 3rem;
+      margin-top: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      max-width: 720px;
       width: 100%;
-      max-width: 700px;
-      border: none;
-      border-top: 1px solid #1e1e1e;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    /* COLOR SWATCHES */
-    .swatches {
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    .meta-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    .swatch-row {
       display: flex;
-      gap: 1rem;
-      align-items: flex-end;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 0.3rem;
     }
 
     .swatch {
-      text-align: center;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--border);
     }
 
-    .swatch-color {
-      width: 56px;
-      height: 56px;
-      margin-bottom: 0.5rem;
-    }
-
-    .swatch-name {
-      font-size: 0.58rem;
-      color: #444;
+    /* FOOTER NAV */
+    .footer-nav {
+      margin-top: 3rem;
+      display: flex;
+      gap: 2rem;
+      font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .swatch-hex {
-      font-size: 0.65rem;
-      color: #666;
-      font-family: monospace;
+    .footer-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
     }
 
-    /* DOWNLOAD NOTE */
-    .download-note {
-      font-size: 0.72rem;
-      color: #444;
-      text-align: center;
-      max-width: 400px;
-      line-height: 1.6;
+    .footer-nav a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    @media (max-width: 560px) {
+      .logo-display { padding: 2.5rem 1.5rem; }
+      .logo-word { font-size: 2rem; }
+      .logo-mark { width: 48px; height: 48px; }
+      .page-title { font-size: 1.6rem; }
+      .brand-meta { gap: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- PRIMARY HORIZONTAL DARK -->
-  <div class="logo-set">
-    <div class="label">Primary Logo — Dark</div>
-    <div class="logo-primary">
+  <div class="page-header">
+    <div class="page-eyebrow">Brand Identity</div>
+    <h1 class="page-title">Rate<em>Check</em></h1>
+    <p class="page-sub">Film rating intelligence. Independent research into how the public perceives and experiences the U.S. film rating system.</p>
+  </div>
+
+  <div class="logo-display">
+    <div class="logo-inner">
       <div class="logo-mark">
         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Film frame outer -->
-          <rect x="2" y="2" width="44" height="44" rx="3" stroke="#d4a843" stroke-width="1.5"/>
-          <!-- Film sprocket holes top -->
-          <rect x="6" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="14" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="22" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="30" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="38" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <!-- Film sprocket holes bottom -->
-          <rect x="6" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="14" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="22" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="30" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="38" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <!-- Checkmark inside frame -->
-          <path d="M13 24 L21 32 L36 16" stroke="#d4a843" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="2" width="44" height="44" rx="3" stroke="#b8975a" stroke-width="1.5"/>
+          <rect x="6" y="5" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="14" y="5" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="22" y="5" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="30" y="5" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="38" y="5" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="6" y="39" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="14" y="39" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="22" y="39" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="30" y="39" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <rect x="38" y="39" width="5" height="4" rx="1" fill="#b8975a" opacity="0.6"/>
+          <path d="M13 24 L21 32 L36 16" stroke="#b8975a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="logo-text-wrap">
-        <div class="logo-wordmark">Rate<span>Check</span></div>
+      <div class="logo-text">
+        <div class="logo-word">Rate<span>Check</span></div>
         <div class="logo-tagline">Film Rating Intelligence</div>
       </div>
     </div>
   </div>
 
-  <hr class="section-divider"/>
-
-  <!-- PRIMARY HORIZONTAL LIGHT -->
-  <div class="logo-set">
-    <div class="label">Primary Logo — Light</div>
-    <div class="logo-light">
-      <div class="logo-mark">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="44" height="44" rx="3" stroke="#c9973a" stroke-width="1.5"/>
-          <rect x="6" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="14" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="22" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="30" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="38" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="6" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="14" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="22" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="30" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="38" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <path d="M13 24 L21 32 L36 16" stroke="#c9973a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="logo-text-wrap">
-        <div class="logo-wordmark">Rate<span style="color:#c9973a">Check</span></div>
-        <div class="logo-tagline">Film Rating Intelligence</div>
+  <div class="brand-meta">
+    <div class="meta-item">
+      <div class="meta-label">Established</div>
+      <div class="meta-value">2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Based</div>
+      <div class="meta-value">Illinois, USA</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Palette</div>
+      <div class="swatch-row">
+        <div class="swatch" style="background:#0d0d0d"></div>
+        <div class="swatch" style="background:#b8975a"></div>
+        <div class="swatch" style="background:#faf6ef"></div>
       </div>
     </div>
   </div>
 
-  <hr class="section-divider"/>
-
-  <!-- ICON ONLY -->
-  <div class="logo-set">
-    <div class="label">Icon Mark — For Social Media Profiles</div>
-    <div class="logo-icon-wrap">
-      <div class="icon-dark">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="44" height="44" rx="3" stroke="#d4a843" stroke-width="1.5"/>
-          <rect x="6" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="14" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="22" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="30" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="38" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="6" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="14" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="22" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="30" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="38" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <path d="M13 24 L21 32 L36 16" stroke="#d4a843" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="icon-gold">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="44" height="44" rx="3" stroke="#0d0d0d" stroke-width="1.5"/>
-          <rect x="6" y="5" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="14" y="5" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="22" y="5" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="30" y="5" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="38" y="5" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="6" y="39" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="14" y="39" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="22" y="39" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="30" y="39" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <rect x="38" y="39" width="5" height="4" rx="1" fill="#0d0d0d" opacity="0.5"/>
-          <path d="M13 24 L21 32 L36 16" stroke="#0d0d0d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="icon-light">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="44" height="44" rx="3" stroke="#c9973a" stroke-width="1.5"/>
-          <rect x="6" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="14" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="22" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="30" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="38" y="5" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="6" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="14" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="22" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="30" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <rect x="38" y="39" width="5" height="4" rx="1" fill="#c9973a" opacity="0.6"/>
-          <path d="M13 24 L21 32 L36 16" stroke="#c9973a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </div>
-  </div>
-
-  <hr class="section-divider"/>
-
-  <!-- STACKED -->
-  <div class="logo-set">
-    <div class="label">Stacked Version — For Square Formats</div>
-    <div class="logo-stacked">
-      <div class="logo-mark" style="width:56px;height:56px">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="44" height="44" rx="3" stroke="#d4a843" stroke-width="1.5"/>
-          <rect x="6" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="14" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="22" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="30" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="38" y="5" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="6" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="14" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="22" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="30" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <rect x="38" y="39" width="5" height="4" rx="1" fill="#d4a843" opacity="0.6"/>
-          <path d="M13 24 L21 32 L36 16" stroke="#d4a843" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="logo-wordmark">Rate<span>Check</span></div>
-      <div class="logo-tagline">Film Rating Intelligence</div>
-    </div>
-  </div>
-
-  <hr class="section-divider"/>
-
-  <!-- COLOR PALETTE -->
-  <div class="logo-set">
-    <div class="label">Brand Color Palette</div>
-    <div class="swatches">
-      <div class="swatch">
-        <div class="swatch-color" style="background:#d4a843"></div>
-        <div class="swatch-name">Gold</div>
-        <div class="swatch-hex">#d4a843</div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#0d0d0d; border:1px solid #222"></div>
-        <div class="swatch-name">Ink</div>
-        <div class="swatch-hex">#0d0d0d</div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#f5f2ec; border:1px solid #e0dbd0"></div>
-        <div class="swatch-name">Cream</div>
-        <div class="swatch-hex">#f5f2ec</div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#555"></div>
-        <div class="swatch-name">Slate</div>
-        <div class="swatch-hex">#555555</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="download-note">
-    Use the dark logo on light backgrounds, light logo on dark backgrounds, and the gold icon mark as your social media profile picture.
+  <div class="footer-nav">
+    <a href="privacy.html">Privacy</a>
+    <a href="survey.html">Survey</a>
+    <a href="mailto:ratecheckhq@gmail.com">Contact</a>
   </div>
 
 </body>
